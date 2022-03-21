@@ -9,10 +9,10 @@ namespace Caravanalyzer
 {
     internal class CaravanDataLoggerBehavior : CampaignBehaviorBase
     {
+        public readonly List<CaravanCombatLogEntry> log = new List<CaravanCombatLogEntry>();
 
         public override void RegisterEvents()
         {
-            CampaignEvents.MobilePartyDestroyed.AddNonSerializedListener(this, OnPartyDestroyed);
             CampaignEvents.MapEventEnded.AddNonSerializedListener(this, OnMapEventEnded);
         }
 
@@ -25,7 +25,14 @@ namespace Caravanalyzer
 
             foreach (var caravanParty in GetMobileCaravansFromSide(me.DefenderSide))
             {
-                LogCaravanFight(caravanParty.MobileParty, me.Winner?.LeaderParty?.MobileParty, me.WinningSide == BattleSideEnum.Defender);
+                LogCaravanFight(caravanParty.MobileParty, me.AttackerSide.LeaderParty.MobileParty, me.WinningSide == BattleSideEnum.Defender);
+
+                CaravanCombatLogEntry logEntry;
+                logEntry.location = caravanParty.Position2D;
+                logEntry.name = caravanParty.Name.ToString();
+                logEntry.winningSide = me.WinningSide;
+
+                log.Add(logEntry);
             }
         }
 
@@ -53,13 +60,6 @@ namespace Caravanalyzer
                 success = caravanWon ? "defeated" : "lost to";
             }
             InformationManager.DisplayMessage(new InformationMessage($"Caravan {caravan.Name} {success} {otherSideLeader.Name} at {caravan.GetPosition2D}"));
-        }
-
-        private void OnPartyDestroyed(MobileParty mp, PartyBase pb)
-        {
-            var isCaravan = mp.IsCaravan;
-            var pos = mp.Position2D;
-            //InformationManager.DisplayMessage(new InformationMessage($"party died is carvan {isCaravan} pos {pos}"));
         }
 
         public override void SyncData(IDataStore dataStore) { }
