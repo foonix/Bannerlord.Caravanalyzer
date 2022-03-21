@@ -12,6 +12,7 @@ namespace Caravanalyzer
     {
         private int lastDisplayedLogIndex = 0;
 
+        private bool showCaravanCombatMarkers = false;
         // marker reuse FIFO
         private readonly Queue<CaravanCombatMarker> _markers = new Queue<CaravanCombatMarker>();
         private readonly int maxMarkers = 1000;
@@ -31,7 +32,16 @@ namespace Caravanalyzer
                 ResetMarkers();
             }
 
-            if (lastDisplayedLogIndex < logger.log.Count - 1)
+            if (input.IsKeyPressed(InputKey.D) && input.IsShiftDown())
+            {
+                if (showCaravanCombatMarkers)
+                {
+                    ResetMarkers();
+                }
+                showCaravanCombatMarkers = !showCaravanCombatMarkers;
+            }
+
+            if (showCaravanCombatMarkers && lastDisplayedLogIndex < logger.log.Count - 1)
             {
                 UpdateVisual();
             }
