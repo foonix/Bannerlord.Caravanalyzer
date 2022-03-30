@@ -12,9 +12,11 @@ namespace Caravanalyzer
             if (gameStarterObject is CampaignGameStarter gameStarter)
             {
                 gameStarter.AddBehavior(new CaravanDataLoggerBehavior());
+                gameStarter.AddBehavior(new Workshop.WorkshopDataLogBehaviour());
             }
 
             Campaign.Current.AddEntityComponent<CaravanCombatVisual>();
+            Campaign.Current.AddEntityComponent<Workshop.WorkshopVisual>();
         }
     }
 }

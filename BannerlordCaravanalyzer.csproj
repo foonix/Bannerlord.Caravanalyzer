@@ -7,7 +7,7 @@
     <ProjectGuid>{7E23C697-83B1-4EF6-8592-7A1595DE4E66}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BannerlordCaravanalyzer</RootNamespace>
+    <RootNamespace>Caravanalyzer</RootNamespace>
     <AssemblyName>BannerlordCaravanalyzer</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -84,6 +84,9 @@
     <Compile Include="CaravanDataLoggerBehavior.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Workshop\WorkshopDataLogBehaviour.cs" />
+    <Compile Include="Workshop\WorkshopLogEntry.cs" />
+    <Compile Include="Workshop\WorkshopVisual.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="SubModule.xml" />
