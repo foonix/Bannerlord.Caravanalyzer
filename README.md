@@ -1,6 +1,8 @@
 # Caravanalyzer
 
-Hot keys:
+Tools for collecting caravan and workshop data from `Mount & Blade II Bannerlord`
+
+## Hot keys
 
 * `Shift+D` : Toggle showing markers wherever caravan combat has happened.  (crosshairs)
 * `Alt+D` : Toggle showing arrows between each caravan's position and current destination city.
