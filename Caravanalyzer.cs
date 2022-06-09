@@ -14,7 +14,10 @@ namespace Caravanalyzer
                 gameStarter.AddBehavior(new CaravanDataLoggerBehavior());
                 gameStarter.AddBehavior(new Workshop.WorkshopDataLogBehaviour());
             }
+        }
 
+        public override void OnAfterGameInitializationFinished(Game game, object gameStarterObject)
+        {
             Campaign.Current.AddEntityComponent<CaravanCombatVisual>();
             Campaign.Current.AddEntityComponent<Workshop.WorkshopVisual>();
         }

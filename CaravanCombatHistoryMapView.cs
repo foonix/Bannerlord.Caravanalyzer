@@ -20,7 +20,7 @@ namespace Caravanalyzer
         private bool showCaravanDestArrows = false;
 
         // ARGB color
-        private uint destArrowColor = 0xb0ea7712;
+        private readonly uint destArrowColor = 0xb0ea7712;
 
         public override void OnVisualTick(MapScreen screen, float realDt, float dt)
         {
